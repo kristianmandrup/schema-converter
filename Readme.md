@@ -9,20 +9,18 @@ Library to convert a schema to a canonical schema. Can be used with [schema-trav
 ## Usage
 
 ```ts
-import { convert } from "schema-converter"
-
+import { convert } from "schema-converter";
 
 const jsonSchema = {
   // ...
-}
-const schema = convert({schema: jsonSchema, type: 'json' })
-
+};
+const schema = convert({ schema: jsonSchema, type: "json" });
 ```
 
 ## Schema formats
 
 - [JSON Schema](https://json-schema.org/)
-- [GraphQL schema](https://graphql.org/learn/schema/) using [graphSchemaToJson](https://github.com/jjwtay/graphSchemaToJson)
+- [GraphQL schema](https://graphql.org/learn/schema/) using [graphSchemaToJson](https://github.com/jjwtay/graphSchemaToJson) and [kristianmandrup version](https://github.com/kristianmandrup/graphSchemaToJson)
 - [Avro](https://avro.apache.org/docs/current/spec.html)
 - [XML Schema Definition XSD](w3schools.com/xml/schema_intro.asp) using [xsd2json](https://github.com/fnogatz/xsd2json)
 
@@ -57,8 +55,20 @@ The canonical format will be based on Avro schema, enriched with attributes comm
       "name": "LongList",
       "aliases": ["LinkedLongs"], // old name for this
       "fields": [
-        { "name": "value", "type": "long", "min": 0, "max": 4500 }, // each element has a long
-        { "name": "next", "type": ["null", "#LongList"] } // optional next element
+        {
+          "name": "value",
+          "type": "numeric",
+          "numericType": "long",
+          "min": 0,
+          "max": 4500
+        }, // each element has a long
+        {
+          "name": "next",
+          "type": [
+            "null",
+            "#LongList"
+          ]
+        } // optional next element
       ]
     }
   }
@@ -72,8 +82,37 @@ The canonical format will be based on Avro schema, enriched with attributes comm
 
 ### GraphQL Schema as JSON
 
-```json
-// TODO
+```js
+{
+  types: {
+    Author: {
+      fields: {
+          name: {
+            isNullable: false,
+            isList: false,
+            directives: {},
+            type: 'String'
+          },
+          Books: {
+            isNullable: true,
+            isList: true,
+            directives: {
+                Bar: {
+                    baz: 'bleh'
+                }
+            },
+            type: 'Book'
+          }
+        },
+        directives: {
+            Foo: {}
+        },
+        interfaces: []
+    },
+    Book: {
+    }
+  }
+}
 ```
 
 ### Avro
