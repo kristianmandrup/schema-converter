@@ -1,5 +1,7 @@
 # Schema converter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/schema-converter.svg)](https://greenkeeper.io/)
+
 Library to convert a schema to a canonical schema. Can be used with [schema-traverser](https://github.com/kristianmandrup/schema-traverser)
 
 - [JSON Schema](https://json-schema.org/)
