@@ -2,6 +2,25 @@
 
 Library to convert a schema to a canonical schema. Can be used with [schema-traverser](https://github.com/kristianmandrup/schema-traverser)
 
+## Install
+
+`yarn add schema-converter`
+
+## Usage
+
+```ts
+import { convert } from "schema-converter"
+
+
+const jsonSchema = {
+  // ...
+}
+const schema = convert({schema: jsonSchema, type: 'json' })
+
+```
+
+## Schema formats
+
 - [JSON Schema](https://json-schema.org/)
 - [GraphQL schema](https://graphql.org/learn/schema/) using [graphSchemaToJson](https://github.com/jjwtay/graphSchemaToJson)
 - [Avro](https://avro.apache.org/docs/current/spec.html)
