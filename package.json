@@ -1,0 +1,22 @@
+{
+  "name": "schema-converter",
+  "version": "1.0.0",
+  "description": "Schema converter",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "schema",
+    "converter"
+  ],
+  "author": "Kristian Mandrup <kmandrup@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.14",
+    "@types/node": "^12.0.8",
+    "jest": "^24.8.0",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.2"
+  }
+}
