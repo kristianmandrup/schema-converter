@@ -20,6 +20,31 @@ GraphQL server from JSON
 
 - [json-graphql-server](https://github.com/marmelab/json-graphql-server)
 
+### Canonical format
+
+The canonical format will be based on Avro schema, enriched with attributes common to JSON schema. GraphQL schema is a small subset of JSON schema but with the same types (known from most programming languages) as Avro. XSD can be directly converted to JSON schema.
+
+```json
+{
+  "version": "1.0",
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "http://yourdomain.com/schemas/myschema.json",
+  "type": "schema",
+  "title": "Order schema",
+  "description": "...",
+  "types": {
+    "LongList": {
+      "type": "record",
+      "name": "LongList",
+      "aliases": ["LinkedLongs"], // old name for this
+      "fields": [
+        { "name": "value", "type": "long", "min": 0, "max": 4500 }, // each element has a long
+        { "name": "next", "type": ["null", "#LongList"] } // optional next element
+      ]
+    }
+  }
+```
+
 ### JSON Schema
 
 ```json
